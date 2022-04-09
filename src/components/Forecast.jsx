@@ -1,5 +1,6 @@
 import { StyleSheet, Text, View, FlatList, Image } from 'react-native';
 import React from 'react';
+
 import temperatureConverter from '../features/temperatureConverter';
 import { HORIZONTAL_CONTAINER_PADDING } from '../constants';
 import capitalize from '../features/capitalize';

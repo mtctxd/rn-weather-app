@@ -5,7 +5,6 @@ import temperatureConverter from '../features/temperatureConverter';
 import { HORIZONTAL_CONTAINER_PADDING } from '../constants';
 import capitalize from '../features/capitalize';
 import { makingDaylyForecastArray } from '../features/makingDaylyForecastArray';
-import { useEffect } from 'react/cjs/react.production.min';
 
 const Forecast = ({ forecast }) => {
   const preparedForecast = makingDaylyForecastArray(forecast.list);
@@ -42,10 +41,6 @@ const Forecast = ({ forecast }) => {
       </View>
     );
   };
-
-  useEffect(() => {
-
-  }, [forecast])
 
   return (
     <View style={styles.container}>

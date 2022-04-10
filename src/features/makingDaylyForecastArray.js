@@ -3,10 +3,13 @@ export const makingDaylyForecastArray = (list) => {
     const iteratedHours = new Date(b.dt * 1000).getHours();
     const dateKey = new Date(b.dt * 1000).toLocaleDateString();
 
-    // so i used multiple cases because the api constantly updating
-    // hours so, like you can not bind yourself to any date.
-    // So in that case, it will select last date and rewrite it
-    // if it matches.
+    /*
+    * So I am using multiple cases because the api constantly updating
+    * hours so, like you can not bind yourself to any date.
+    * So in that case, it will select last date and rewrite it
+    * if it matches.
+    */
+
     switch (iteratedHours) {
       case 11:
       case 12:

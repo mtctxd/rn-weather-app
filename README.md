@@ -17,6 +17,8 @@ Api provided by [openweathermap](https://openweathermap.org/)
 - To start app on computer pres `w` while in terminal
 - or you can open it on your camera
 
+Or oyu can just download apk from [here](https://shorturl.at/amCQ1).
+
 ![QRCode here](https://qr.expo.dev/expo-go?owner=mtctxd&slug=weather-360&releaseChannel=default&host=exp.host)
 
 currently not working on iOS

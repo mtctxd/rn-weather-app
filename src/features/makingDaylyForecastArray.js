@@ -8,9 +8,9 @@ export const makingDaylyForecastArray = (list) => {
     // So in that case, it will select last date and rewrite it
     // if it matches.
     switch (iteratedHours) {
-      case 15:
-      case 16:
-      case 17:
+      case 11:
+      case 12:
+      case 13:
         return {
           ...a,
           [dateKey]: {

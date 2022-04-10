@@ -1,6 +1,6 @@
 ## WEATHER APP
 
-### [EXPO DEMO](https://qr.expo.dev/expo-go?owner=mtctxd&slug=weather-360&releaseChannel=default&host=exp.host)
+### [EXPO DEMO](https://expo.dev/@mtctxd/weather-360)
 
 Technology used:
 - React Native

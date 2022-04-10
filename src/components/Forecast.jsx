@@ -10,32 +10,39 @@ const Forecast = ({ forecast }) => {
   const preparedForecast = makingDaylyForecastArray(forecast.list);
 
   const renderItem = ({ item }) => {
-    const { dt } = item.day;
-    const day = item.day;
-    const night = item.night;
-    const dayTemperature = day.main.temp;
-    const nightTemperature = night.main.temp;
-    const { description, icon } = item.day.weather[0];
-    const date = new Date(dt * 1000).toDateString();
+    if (item.day && item.night) {
+      const { dt } = item.day;
+      const day = item.day;
+      const night = item.night;
+      const dayTemperature = day.main.temp;
+      const nightTemperature = night.main.temp;
+      const { description, icon } = item.day.weather[0];
+      const date = new Date(dt * 1000).toDateString();
 
-    return (
-      <View style={styles.itemContainer}>
-        <View style={styles.date}>
-          <Text style={styles.text}>{date}</Text>
-          <Text style={styles.text}>{capitalize(description)}</Text>
+      return (
+        <View style={styles.itemContainer}>
+          <View style={styles.date}>
+            <Text style={styles.text}>{date}</Text>
+            <Text style={styles.text}>{capitalize(description)}</Text>
+          </View>
+          <Image
+            style={styles.image}
+            source={{
+              uri: `http://openweathermap.org/img/wn/${icon}@2x.png`,
+            }}
+          />
+          <View>
+            <Text style={styles.text}>{`Day: ${temperatureConverter(
+              dayTemperature
+            )}°C`}</Text>
+            <Text style={styles.text}>{`Night: ${temperatureConverter(
+              nightTemperature
+            )}°C`}</Text>
+          </View>
         </View>
-        <Image
-          style={styles.image}
-          source={{
-            uri: `http://openweathermap.org/img/wn/${icon}@2x.png`,
-          }}
-        />
-        <View>
-          <Text style={styles.text}>{`Day: ${temperatureConverter(dayTemperature)}°C`}</Text>
-          <Text style={styles.text}>{`Night: ${temperatureConverter(nightTemperature)}°C`}</Text>
-        </View>
-      </View>
-    );
+      );
+    }
+    return;
   };
 
   return (
@@ -43,7 +50,7 @@ const Forecast = ({ forecast }) => {
       <FlatList
         data={preparedForecast}
         renderItem={renderItem}
-        keyExtractor={(item) => item.dt}
+        keyExtractor={(item) => item.day.dt}
       />
     </View>
   );
@@ -74,5 +81,5 @@ const styles = StyleSheet.create({
   },
   text: {
     fontFamily: 'monospace',
-  }
+  },
 });

@@ -107,8 +107,6 @@ export default function App() {
         ? '13d'
         : weather.weather[0].icon);
 
-    console.log(weather.weather[0].icon);
-
     return (
       <ImageBackground style={{ width: '100%', height: '100%' }} source={path}>
         <SafeAreaView style={styles.container}>

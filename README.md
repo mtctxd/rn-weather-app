@@ -6,7 +6,7 @@ Technology used:
 - React Native
 - expo
 
-Api provided by [openweatherma](https://openweathermap.org/)
+Api provided by [openweathermap](https://openweathermap.org/)
 
 
 ### Seting up

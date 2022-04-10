@@ -3,7 +3,7 @@
     "name": "weather-360",
     "slug": "weather-360",
     "privacy": "public",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {

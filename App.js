@@ -24,7 +24,8 @@ import { backgroundImageSelector } from './src/features/backgroundImageSelector'
 export default function App() {
   const [weather, setWeather] = useState(null);
   const [forecast, setForecast] = useState(null);
-  const [appDataAccessStatus, setAppDataAccessStatus] = useState(null); //lefting this for debuging
+  const [appDataAccessStatus, setAppDataAccessStatus] =
+    useState('Geting location...'); //lefting this for debuging
 
   let locale = '';
 
@@ -44,9 +45,7 @@ export default function App() {
       const locationRequestStatus =
         await Location.requestForegroundPermissionsAsync();
 
-      if (locationRequestStatus !== 'granted') {
-        setAppDataAccessStatus('there no acces to location granted');
-      }
+        setAppDataAccessStatus('Geting your location...')
 
       const location = await Location.getCurrentPositionAsync();
 
@@ -71,8 +70,13 @@ export default function App() {
           if (response.ok) {
             return data;
           }
+          setAppDataAccessStatus(
+            'Sorry, there are some problem with server...'
+          );
         } catch (error) {
-          setAppDataAccessStatus('Could not get weather data');
+          setAppDataAccessStatus(
+            'Sorry, there are some problem with server...'
+          );
         }
       };
 
@@ -116,7 +120,7 @@ export default function App() {
   return (
     <View style={styles.starterScreen}>
       <Image style={styles.image} source={require('./assets/icon.png')} />
-      <Text style={styles.loadingData}>Geting location...</Text>
+      <Text style={styles.loadingData}>{appDataAccessStatus}</Text>
     </View>
   );
 }
@@ -137,6 +141,7 @@ const styles = StyleSheet.create({
   },
   loadingData: {
     fontSize: 24,
+    marginTop: 16,
     fontFamily: 'monospace',
   },
 });

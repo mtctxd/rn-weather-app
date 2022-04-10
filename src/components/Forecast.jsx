@@ -4,18 +4,20 @@ import React from 'react';
 import temperatureConverter from '../features/temperatureConverter';
 import { HORIZONTAL_CONTAINER_PADDING } from '../constants';
 import capitalize from '../features/capitalize';
-import { makingDaylyForecastLarray } from '../features/makingDaylyForecastLarray';
+import { makingDaylyForecastArray } from '../features/makingDaylyForecastArray';
 
 const Forecast = ({ forecast }) => {
-  let preparedForecast = makingDaylyForecastLarray(forecast.list);
-  preparedForecast = preparedForecast.splice(0, preparedForecast.length);
+  const preparedForecast = makingDaylyForecastArray(forecast.list);
+
+  console.log(preparedForecast);
 
   const renderItem = ({ item }) => {
-    const {
-      main: { temp_min, temp_max },
-      dt,
-    } = item;
-    const { description, icon } = item.weather[0];
+    const { dt } = item.day;
+    const day = item.day;
+    const night = item.night;
+    const dayTemperature = day.main.temp;
+    const nightTemperature = night.main.temp;
+    const { description, icon } = item.day.weather[0];
     const date = new Date(dt * 1000).toDateString();
 
     return (
@@ -31,8 +33,8 @@ const Forecast = ({ forecast }) => {
           }}
         />
         <View>
-          <Text style={styles.text}>{`Min: ${temperatureConverter(temp_min)}°C`}</Text>
-          <Text style={styles.text}>{`Max: ${temperatureConverter(temp_max)}°C`}</Text>
+          <Text style={styles.text}>{`Day: ${temperatureConverter(dayTemperature)}°C`}</Text>
+          <Text style={styles.text}>{`Night: ${temperatureConverter(nightTemperature)}°C`}</Text>
         </View>
       </View>
     );

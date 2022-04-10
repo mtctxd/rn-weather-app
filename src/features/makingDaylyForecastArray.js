@@ -31,8 +31,9 @@ export const makingDaylyForecastArray = (list) => {
 
     return a;
   }, {});
-
+  
   const outputResult = Object.values(resultList);
+  console.log(outputResult);
 
   return outputResult;
 };

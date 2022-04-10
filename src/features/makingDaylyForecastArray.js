@@ -33,7 +33,6 @@ export const makingDaylyForecastArray = (list) => {
   }, {});
 
   const outputResult = Object.values(resultList);
-  console.log(outputResult);
 
   return outputResult;
 };

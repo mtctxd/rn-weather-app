@@ -9,8 +9,6 @@ import { makingDaylyForecastArray } from '../features/makingDaylyForecastArray';
 const Forecast = ({ forecast }) => {
   const preparedForecast = makingDaylyForecastArray(forecast.list);
 
-  console.log(preparedForecast);
-
   const renderItem = ({ item }) => {
     const { dt } = item.day;
     const day = item.day;

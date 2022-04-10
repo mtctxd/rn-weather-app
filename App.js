@@ -20,6 +20,7 @@ import {
   WEATHER_ENDPOINT,
 } from './src/constants';
 import { backgroundImageSelector } from './src/features/backgroundImageSelector';
+import temperatureConverter from './src/features/temperatureConverter';
 
 export default function App() {
   const [weather, setWeather] = useState(null);
@@ -45,7 +46,7 @@ export default function App() {
       const locationRequestStatus =
         await Location.requestForegroundPermissionsAsync();
 
-        setAppDataAccessStatus('Geting your location...')
+      setAppDataAccessStatus('Geting your location...');
 
       const location = await Location.getCurrentPositionAsync();
 
@@ -101,7 +102,12 @@ export default function App() {
   };
 
   if (weather && forecast) {
-    const path = backgroundImageSelector(weather.weather[0].icon);
+    const path = backgroundImageSelector(
+      weather.main.temp < 273.15
+        ? '13d'
+        : weather.weather[0].icon);
+
+    console.log(weather.weather[0].icon);
 
     return (
       <ImageBackground style={{ width: '100%', height: '100%' }} source={path}>

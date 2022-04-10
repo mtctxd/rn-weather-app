@@ -18,3 +18,5 @@ Api provided by [openweathermap](https://openweathermap.org/)
 - or you can open it on your camera
 
 ![QRCode here](https://qr.expo.dev/expo-go?owner=mtctxd&slug=weather-360&releaseChannel=default&host=exp.host)
+
+currently not working on iOS

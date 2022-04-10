@@ -5,16 +5,19 @@ import {
   StatusBar,
   Platform,
 } from 'react-native';
+import { makingDaylyForecastArray } from '../features/makingDaylyForecastArray';
 
 
 import CurrentWeather from './CurrentWeather';
 import Forecast from './Forecast';
 
 export const Screen = ({ weather, forecast }) => {
+  const preparedForecast = makingDaylyForecastArray(forecast.list);
+
     return (
       <View style={styles.container}>
         <CurrentWeather weather={weather} />
-        <Forecast forecast={forecast} />
+        <Forecast preparedForecast={preparedForecast} />
       </View>
     );
 };

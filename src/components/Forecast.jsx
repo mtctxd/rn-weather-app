@@ -4,11 +4,8 @@ import React from 'react';
 import temperatureConverter from '../features/temperatureConverter';
 import { HORIZONTAL_CONTAINER_PADDING } from '../constants';
 import capitalize from '../features/capitalize';
-import { makingDaylyForecastArray } from '../features/makingDaylyForecastArray';
 
-const Forecast = ({ forecast }) => {
-  const preparedForecast = makingDaylyForecastArray(forecast.list);
-
+const Forecast = ({ preparedForecast }) => {
   const renderItem = ({ item }) => {
     if (item.day && item.night) {
       const { dt } = item.day;
